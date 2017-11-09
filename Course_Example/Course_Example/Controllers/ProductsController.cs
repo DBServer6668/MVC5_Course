@@ -6,9 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Course_Example.Models;
 
-namespace Course_Example.Controllers
+namespace Course_Example.Models
 {
     public class ProductsController : Controller
     {
@@ -128,6 +127,96 @@ namespace Course_Example.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult CreateNew()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNew(ProductCreationVM data)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Product.Add(new Product()
+                {
+                    ProductId = 0,
+                    ProductName = data.ProductName,
+                    Price = data.Price,
+                    Active = true,
+                    Stock = 1
+                });
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public ActionResult TOP10()
+        {
+            var db = new FabricsEntities();
+
+            var result = db.Product.Take(10);
+
+            // LINQ ( C# 3.0 )
+            //var data = from p in result
+            //           select new ProductCreationVM()
+            //           {
+            //               ProductId = p.ProductId,
+            //               ProductName = p.ProductName,
+            //               Price = p.Price,
+            //               OrderLineCount = p.OrderLine.Count()
+            //           };
+            //var data = "SELECT * FROM table WHERE ...";
+            var data = db.Database.SqlQuery < ProductCreationVM >(
+                "SELECT TOP 10*, OrderLineCount=(SELECT COUNT(*) FROM dbo.OrderLine o WHERE o.ProductId=p.ProductId) FROM dbo.Product p");
+                      
+            return View(data);
+        }
+
+        public ActionResult PriceUp()
+        {
+            var db = new FabricsEntities();
+
+            foreach (var item in db.Product)
+            {
+                item.Price += 1;
+            }
+            db.SaveChanges();
+            //db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price+1");
+
+            return RedirectToAction("Top10");
+        }
+
+        public ActionResult PriceUp_Each(int? id)
+        {
+            var db = new FabricsEntities();
+            foreach (var item in db.Product) {
+                if (null != id && id == item.ProductId) {
+                    item.Price += 1;
+                }
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Top10");
+        }
+
+        public ActionResult PriceDown()
+        {
+            var db = new FabricsEntities();
+            db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price-1");
+
+            return RedirectToAction("Top10");
+        }
+
+        public ActionResult PriceDown_Each(int? id)
+        {
+            var db = new FabricsEntities();
+            db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price-1 WHERE ProductId="+id);
+
+            return RedirectToAction("Top10");
         }
     }
 }

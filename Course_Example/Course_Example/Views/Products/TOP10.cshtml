@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Course_Example.Models.ProductCreationVM>
+
+@{
+    ViewBag.Title = "TOP10";
+}
+
+<h2>TOP10</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("提高價格", "PriceUp") |
+    @Html.ActionLink("降低價格", "PriceDown")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderLineCount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderLineCount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }) |
+            @Html.ActionLink("提高價格", "PriceUp_Each", new { id = item.ProductId }) |
+            @Html.ActionLink("降低價格", "PriceDown_Each", new { id = item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>
