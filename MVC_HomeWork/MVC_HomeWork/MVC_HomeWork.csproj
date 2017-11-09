@@ -140,6 +140,7 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\客戶統計.cs" />
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Content Include="Views\客戶銀行資訊\Details.cshtml" />
     <Content Include="Views\客戶銀行資訊\Edit.cshtml" />
     <Content Include="Views\客戶銀行資訊\Index.cshtml" />
+    <Content Include="Views\客戶資料\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

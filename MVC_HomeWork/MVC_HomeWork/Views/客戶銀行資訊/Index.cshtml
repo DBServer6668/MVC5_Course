@@ -4,15 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>
+    @Html.ActionLink("表單首頁", "Index")
+</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("創建新資料", "Create") |
+    @Html.ActionLink("顯示已刪除資料", "Delete_View")
 </p>
 
 <p>
     <form align="right" action="/客戶銀行資訊/Index" method="get">
-        Search: <input type="search" name="keyword" />
+        以銀行名稱搜尋：<input type="search" name="keyword" />
         <input type="submit" value="搜尋" />
     </form>
 </p>
@@ -62,9 +65,9 @@
                 @Html.DisplayFor(modelItem => item.客戶資料.客戶名稱)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("編輯", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("詳細資料", "Details", new { id = item.Id }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.Id })
             </td>
         </tr>
     }

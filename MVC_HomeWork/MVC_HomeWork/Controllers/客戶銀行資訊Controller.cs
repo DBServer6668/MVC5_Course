@@ -25,12 +25,12 @@ namespace MVC_HomeWork.Controllers
             var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
             if (null != keyword)
             {
-                var date_銀行名稱 = 客戶銀行資訊.Where(p => p.銀行名稱.Contains(keyword)).ToList();
+                var date_銀行名稱 = 客戶銀行資訊.Where(P => P.銀行名稱.Contains(keyword) && P.是否已刪除 != true).ToList();
                 return View("Index", date_銀行名稱);
             }
             else
             {
-                return View(客戶銀行資訊.ToList());
+                return View(客戶銀行資訊.Where(P => P.是否已刪除 != true).ToList());
             }
         }
 
@@ -61,7 +61,7 @@ namespace MVC_HomeWork.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,客戶Id,銀行名稱,銀行代碼,分行代碼,帳戶名稱,帳戶號碼")] 客戶銀行資訊 客戶銀行資訊)
+        public ActionResult Create([Bind(Include = "Id,客戶Id,銀行名稱,銀行代碼,分行代碼,帳戶名稱,帳戶號碼,是否已刪除")] 客戶銀行資訊 客戶銀行資訊)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace MVC_HomeWork.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,客戶Id,銀行名稱,銀行代碼,分行代碼,帳戶名稱,帳戶號碼")] 客戶銀行資訊 客戶銀行資訊)
+        public ActionResult Edit([Bind(Include = "Id,客戶Id,銀行名稱,銀行代碼,分行代碼,帳戶名稱,帳戶號碼,是否已刪除")] 客戶銀行資訊 客戶銀行資訊)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +128,9 @@ namespace MVC_HomeWork.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶銀行資訊 客戶銀行資訊 = db.客戶銀行資訊.Find(id);
-            db.客戶銀行資訊.Remove(客戶銀行資訊);
+            //db.客戶銀行資訊.Remove(客戶銀行資訊);
+            客戶銀行資訊.是否已刪除 = true;
+            db.Entry(客戶銀行資訊).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -140,6 +142,13 @@ namespace MVC_HomeWork.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Delete_View()
+        {
+            var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
+            var data = 客戶銀行資訊.Where(P => P.是否已刪除 == true).ToList();
+            return View("Index", data);
         }
     }
 }

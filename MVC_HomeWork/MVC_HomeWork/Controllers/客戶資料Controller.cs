@@ -19,16 +19,21 @@ namespace MVC_HomeWork.Controllers
         //{
         //    return View(db.客戶資料.ToList());
         //}
-        public ActionResult Index(String keyword)
+        public ActionResult Index(String keyword, String dropDownList)
         {
             if (null != keyword)
             {
-                var data = db.客戶資料.Where(P => P.客戶名稱.Contains(keyword)).ToList();
+                var data = db.客戶資料.Where(P => P.客戶名稱.Contains(keyword) && P.是否已刪除 != true).ToList();
+                return View("Index", data);
+            }
+            else if (null != dropDownList && !dropDownList.Equals("顯示全部分類"))
+            {
+                var data = db.客戶資料.Where(P => P.客戶分類.Equals(dropDownList) && P.是否已刪除 != true).ToList();
                 return View("Index", data);
             }
             else
             {
-                return View(db.客戶資料.ToList());
+                return View(db.客戶資料.Where(P => P.是否已刪除 != true).ToList());
             }
         }
 
@@ -58,10 +63,11 @@ namespace MVC_HomeWork.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email")] 客戶資料 客戶資料)
+        public ActionResult Create([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,客戶分類,是否已刪除")] 客戶資料 客戶資料, string dropDownList)
         {
             if (ModelState.IsValid)
             {
+                客戶資料.客戶分類 = dropDownList;
                 db.客戶資料.Add(客戶資料);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -90,10 +96,11 @@ namespace MVC_HomeWork.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email")] 客戶資料 客戶資料)
+        public ActionResult Edit([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email, 客戶分類, 是否已刪除")] 客戶資料 客戶資料, string dropDownList)
         {
             if (ModelState.IsValid)
             {
+                客戶資料.客戶分類 = dropDownList;
                 db.Entry(客戶資料).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,7 +129,9 @@ namespace MVC_HomeWork.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
+            //db.客戶資料.Remove(客戶資料);
+            客戶資料.是否已刪除 = true;
+            db.Entry(客戶資料).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -134,6 +143,95 @@ namespace MVC_HomeWork.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult StoSort(int? id)
+        {
+            var data = db.客戶資料.Where(P => P.是否已刪除 != true).ToList();
+
+            switch (id)
+            {
+                case 1:
+                    data = data.OrderBy(P => P.客戶名稱).ToList();
+                    break;
+                case 2:
+                    data = data.OrderBy(P => P.統一編號).ToList();
+                    break;
+                case 3:
+                    data = data.OrderBy(P => P.電話).ToList();
+                    break;
+                case 4:
+                    data = data.OrderBy(P => P.傳真).ToList();
+                    break;
+                case 5:
+                    data = data.OrderBy(P => P.地址).ToList();
+                    break;
+                case 6:
+                    data = data.OrderBy(P => P.Email).ToList();
+                    break;
+                case 7:
+                    data = data.OrderBy(P => P.客戶分類).ToList();
+                    break;
+            }
+
+            return View("Index", data);
+        }
+
+        public ActionResult StoSort_desc(int? id)
+        {
+            var data = db.客戶資料.Where(P => P.是否已刪除 != true).ToList();
+
+            switch (id)
+            {
+                case 1:
+                    data = data.OrderByDescending(P => P.客戶名稱).ToList();
+                    break;
+                case 2:
+                    data = data.OrderByDescending(P => P.統一編號).ToList();
+                    break;
+                case 3:
+                    data = data.OrderByDescending(P => P.電話).ToList();
+                    break;
+                case 4:
+                    data = data.OrderByDescending(P => P.傳真).ToList();
+                    break;
+                case 5:
+                    data = data.OrderByDescending(P => P.地址).ToList();
+                    break;
+                case 6:
+                    data = data.OrderByDescending(P => P.Email).ToList();
+                    break;
+                case 7:
+                    data = data.OrderByDescending(P => P.客戶分類).ToList();
+                    break;
+            }
+
+            return View("Index", data);
+        }
+
+        public ActionResult Delete_View()
+        {
+            var data = db.客戶資料.Where(P => P.是否已刪除 == true).ToList();
+            return View("Index", data);
+        }
+
+        public ActionResult Statistics()
+        {
+            var db = new 客戶資料Entities();
+
+            var result = db.客戶資料.Where(P => P.是否已刪除 != true);
+
+            // LINQ ( C# 3.0 )
+            //var data = "SELECT * FROM table WHERE ...";
+            var data = from p in result
+                       select new 客戶統計()
+                       {
+                           客戶名稱 = p.客戶名稱,
+                           銀行帳戶數量 = p.客戶銀行資訊.Count(),
+                           聯絡人數量 = p.客戶聯絡人.Count()
+                       };
+
+            return View(data);
         }
     }
 }

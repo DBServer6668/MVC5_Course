@@ -21,6 +21,8 @@
     <Property Name="傳真" Type="nvarchar" MaxLength="50" />
     <Property Name="地址" Type="nvarchar" MaxLength="100" />
     <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="客戶分類" Type="nvarchar(max)" />
+    <Property Name="是否已刪除" Type="bit" />
   </EntityType>
   <EntityType Name="客戶銀行資訊">
     <Key>
@@ -33,6 +35,7 @@
     <Property Name="分行代碼" Type="int" />
     <Property Name="帳戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="帳戶號碼" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="是否已刪除" Type="bit" />
   </EntityType>
   <EntityType Name="客戶聯絡人">
     <Key>
@@ -45,6 +48,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="手機" Type="nvarchar" MaxLength="50" />
     <Property Name="電話" Type="nvarchar" MaxLength="50" />
+    <Property Name="是否已刪除" Type="bit" />
   </EntityType>
   <Association Name="FK_客戶銀行資訊_客戶資料">
     <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />

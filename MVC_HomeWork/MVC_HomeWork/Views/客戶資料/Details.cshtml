@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>詳細資料</h2>
 
 <div>
     <h4>客戶資料</h4>
@@ -58,9 +58,16 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.客戶分類)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.客戶分類)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("返回表單首頁", "Index")
 </p>
