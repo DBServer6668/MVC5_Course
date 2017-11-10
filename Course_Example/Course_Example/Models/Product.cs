@@ -11,8 +11,7 @@ namespace Course_Example.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,19 +19,13 @@ namespace Course_Example.Models
         {
             this.OrderLine = new HashSet<OrderLine>();
         }
-
+    
         public int ProductId { get; set; }
-        [Required(ErrorMessage = "請填寫商品名稱")]
-        //[StringLength(10, ErrorMessage = "商品名稱長度不得超過 10 個字元")]
         public string ProductName { get; set; }
-        [Required]
         public Nullable<decimal> Price { get; set; }
-        [Required]
         public Nullable<bool> Active { get; set; }
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
         public Nullable<decimal> Stock { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderLine> OrderLine { get; set; }
     }

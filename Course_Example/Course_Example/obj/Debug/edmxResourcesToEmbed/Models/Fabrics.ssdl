@@ -55,7 +55,7 @@
       <PropertyRef Name="ProductId" />
     </Key>
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductName" Type="varchar" MaxLength="80" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="80" />
     <Property Name="Price" Type="smallmoney" />
     <Property Name="Active" Type="bit" />
     <Property Name="Stock" Type="numeric" Precision="18" Scale="3" />

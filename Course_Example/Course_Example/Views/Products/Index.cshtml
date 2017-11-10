@@ -6,6 +6,12 @@
 
 <h2>Index</h2>
 
+@if (null != TempData["ProductInsertedMsg"]) {
+   <script>
+       alert('@TempData["ProductInsertedMsg"]')
+   </script>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

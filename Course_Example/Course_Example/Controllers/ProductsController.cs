@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Course_Example.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,14 +10,26 @@ using System.Web.Mvc;
 
 namespace Course_Example.Models
 {
-    public class ProductsController : Controller
+    //public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
-        private FabricsEntities db = new FabricsEntities();
+        //private FabricsEntities db = new FabricsEntities();
 
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Product.Take(10).ToList());
+            //return View(db.Product.Take(10).ToList());
+            if (true)
+            {
+                ViewData.Model = db.Product.Take(10).ToList();
+            }
+            else
+            {
+                ViewData.Model = db.Product.Take(10).ToList();
+            }
+
+            return View();
+
         }
 
         public ActionResult Search(string keyword)
@@ -57,6 +70,9 @@ namespace Course_Example.Models
             {
                 db.Product.Add(product);
                 db.SaveChanges();
+
+                TempData["ProductInsertedMsg"] = product.ProductName + " 新增成功";
+
                 return RedirectToAction("Index");
             }
 
@@ -170,9 +186,9 @@ namespace Course_Example.Models
             //               OrderLineCount = p.OrderLine.Count()
             //           };
             //var data = "SELECT * FROM table WHERE ...";
-            var data = db.Database.SqlQuery < ProductCreationVM >(
+            var data = db.Database.SqlQuery<ProductCreationVM>(
                 "SELECT TOP 10*, OrderLineCount=(SELECT COUNT(*) FROM dbo.OrderLine o WHERE o.ProductId=p.ProductId) FROM dbo.Product p");
-                      
+
             return View(data);
         }
 
@@ -193,8 +209,10 @@ namespace Course_Example.Models
         public ActionResult PriceUp_Each(int? id)
         {
             var db = new FabricsEntities();
-            foreach (var item in db.Product) {
-                if (null != id && id == item.ProductId) {
+            foreach (var item in db.Product)
+            {
+                if (null != id && id == item.ProductId)
+                {
                     item.Price += 1;
                 }
             }
@@ -214,7 +232,7 @@ namespace Course_Example.Models
         public ActionResult PriceDown_Each(int? id)
         {
             var db = new FabricsEntities();
-            db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price-1 WHERE ProductId="+id);
+            db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price-1 WHERE ProductId=" + id);
 
             return RedirectToAction("Top10");
         }
