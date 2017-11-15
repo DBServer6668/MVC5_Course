@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "AlertPost";
+}
+
+<h2>嘗試以JavaScript實作AJAX，於MVC採JsonResult進行回應</h2>
+<h4>(正確帳密：20171117///20171117)</h4>
+
+<br />
+
+<p>
+    <form id="Form_Login">
+        <ul style="list-style-type: none;">
+            <li>
+                @Html.Label("Account：")
+                @Html.TextBox("Account", "", new { id = "TextBox_Account" })
+            </li>
+            <li>
+                @Html.Label("Password：")
+                @Html.Password("Password", "", new { id = "TextBox_Password" })
+            </li>
+            <li>
+                <input type="button" value="送出" id="ButtonSubmit" />
+                <input type="reset" value="清除" />
+            </li>
+        </ul>
+    </form>
+</p>
+
+@section scripts{
+    //jquery.js & bootstrap.js here
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/bootstrap-tagsinput.js"></script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ButtonSubmit').click(function () { SubmitEventHandler(); });
+        });
+        function SubmitEventHandler() {
+            var account = $.trim($('#TextBox_Account').val());
+            var password = $.trim($('#TextBox_Password').val());
+            //if (account.length == 0 || password.length == 0) {
+            //    alert('資料輸入不齊全');
+            //}
+            //else {
+            var postData = $('#Form_Login').serialize();
+            $.ajax({
+                url: '@(Url.Action("AlertPost", "Home"))',
+                type: "POST",
+                data: postData,
+                dataType: "json",
+                async: false,
+                cache: false,
+                success: function (data) {
+                    if (data) {
+                        if (!data.result) {
+                            alert(data.msg);
+                        }
+                        else {
+                            $('#TextBox_Account').val('');
+                            $('#TextBox_Password').val('');
+                            alert(data.msg + ' 登入完成');
+                        }
+                    }
+                    else {
+                        alert('沒有回傳');
+                    }
+                }
+            });
+            //}
+        }
+    </script>
+}

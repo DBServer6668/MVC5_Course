@@ -7,45 +7,48 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_HomeWork.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MVC_HomeWork.Controllers
 {
-    public class 客戶聯絡人Controller : Controller
+    public class 客戶聯絡人Controller : Base客戶聯絡人Controller
     {
-        private 客戶資料Entities db = new 客戶資料Entities();
-
         // GET: 客戶聯絡人
         //public ActionResult Index()
         //{
         //    var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
         //    return View(客戶聯絡人.ToList());
         //}
-        public ActionResult Index(String keyword, int? dropDownList)
+        public ActionResult Index(String keyword, String dropDownList)
         {
-            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            var categories = 客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(P => P.職稱).ToList();
-            SelectList categoryList = new SelectList(
-                categories,
-                "Id",
-                "職稱"
-                );
+            //var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
 
-            ViewBag.categoryList = categoryList;
-
-            if (null != keyword)
+            if (null != dropDownList && !dropDownList.Equals("顯示全部分類"))
             {
-                var date_客戶聯絡人 = 客戶聯絡人.Where(P => P.姓名.Contains(keyword) && P.是否已刪除 != true).ToList();
-                return View("Index", date_客戶聯絡人);
-            }
-            else if (null != dropDownList)
-            {
-                var date_客戶聯絡人 = 客戶聯絡人.Where(P => P.Id == dropDownList && P.是否已刪除 != true).ToList();
-                return View("Index", date_客戶聯絡人);
+                _dropDownList = dropDownList;
             }
             else
             {
-                return View(客戶聯絡人.Where(P => P.是否已刪除 != true).ToList());
+                _dropDownList = null;
             }
+
+            if (null != keyword)
+            {
+                _keyword = keyword;
+
+            }
+            else
+            {
+                _keyword = null;
+
+            }
+
+            ViewBag.categoryList = getdropDownList();
+
+            ViewData.Model = getdata();
+
+            return View();
         }
 
         // GET: 客戶聯絡人/Details/5
@@ -66,7 +69,7 @@ namespace MVC_HomeWork.Controllers
         // GET: 客戶聯絡人/Create
         public ActionResult Create()
         {
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
+            ViewBag.客戶Id = new SelectList(db.客戶資料.Where(P => P.是否已刪除 != true), "Id", "客戶名稱");
             return View();
         }
 
@@ -77,15 +80,15 @@ namespace MVC_HomeWork.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,客戶Id,職稱,姓名,Email,手機,電話, 是否已刪除")] 客戶聯絡人 客戶聯絡人)
         {
-            if (db.客戶聯絡人.Any(p => p.客戶Id == 客戶聯絡人.客戶Id && p.姓名 == 客戶聯絡人.姓名))
-            {
-                ModelState.AddModelError("姓名", "測試中，本系統聯絡人姓名不可重複");
-            }
+            //if (db.客戶聯絡人.Any(p => p.客戶Id == 客戶聯絡人.客戶Id && p.姓名 == 客戶聯絡人.姓名))
+            //{
+            //    ModelState.AddModelError("姓名", "測試中，本系統聯絡人姓名不可重複");
+            //}
 
-            if (db.客戶聯絡人.Any(p => p.客戶Id == 客戶聯絡人.客戶Id && p.Email == 客戶聯絡人.Email))
-            {
-                ModelState.AddModelError("Email", "測試中，本系統聯絡人Email不可重複");
-            }
+            //if (db.客戶聯絡人.Any(p => p.客戶Id == 客戶聯絡人.客戶Id && p.Email == 客戶聯絡人.Email))
+            //{
+            //    ModelState.AddModelError("Email", "測試中，本系統聯絡人Email不可重複");
+            //}
 
             if (ModelState.IsValid)
             {
@@ -94,7 +97,7 @@ namespace MVC_HomeWork.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            ViewBag.客戶Id = new SelectList(db.客戶資料.Where(P => P.是否已刪除 != true), "Id", "客戶名稱", 客戶聯絡人.客戶Id);
             return View(客戶聯絡人);
         }
 
@@ -110,7 +113,7 @@ namespace MVC_HomeWork.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            ViewBag.客戶Id = new SelectList(db.客戶資料.Where(P => P.是否已刪除 != true), "Id", "客戶名稱", 客戶聯絡人.客戶Id);
             return View(客戶聯絡人);
         }
 
@@ -121,15 +124,15 @@ namespace MVC_HomeWork.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,客戶Id,職稱,姓名,Email,手機,電話, 是否已刪除")] 客戶聯絡人 客戶聯絡人)
         {
-            if (db.客戶聯絡人.Any(p => p.Id != 客戶聯絡人.Id && p.客戶Id == 客戶聯絡人.客戶Id && p.姓名 == 客戶聯絡人.姓名))
-            {
-                ModelState.AddModelError("姓名", "測試中，本系統聯絡人姓名不可重複");
-            }
+            //if (db.客戶聯絡人.Any(p => p.Id != 客戶聯絡人.Id && p.客戶Id == 客戶聯絡人.客戶Id && p.姓名 == 客戶聯絡人.姓名))
+            //{
+            //    ModelState.AddModelError("姓名", "測試中，本系統聯絡人姓名不可重複");
+            //}
 
-            if (db.客戶聯絡人.Any(p => p.Id != 客戶聯絡人.Id && p.客戶Id == 客戶聯絡人.客戶Id && p.Email == 客戶聯絡人.Email))
-            {
-                ModelState.AddModelError("Email", "測試中，本系統聯絡人Email不可重複");
-            }
+            //if (db.客戶聯絡人.Any(p => p.Id != 客戶聯絡人.Id && p.客戶Id == 客戶聯絡人.客戶Id && p.Email == 客戶聯絡人.Email))
+            //{
+            //    ModelState.AddModelError("Email", "測試中，本系統聯絡人Email不可重複");
+            //}
 
             if (ModelState.IsValid)
             {
@@ -137,7 +140,7 @@ namespace MVC_HomeWork.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+            ViewBag.客戶Id = new SelectList(db.客戶資料.Where(P => P.是否已刪除 != true), "Id", "客戶名稱", 客戶聯絡人.客戶Id);
             return View(客戶聯絡人);
         }
 
@@ -180,92 +183,35 @@ namespace MVC_HomeWork.Controllers
 
         public ActionResult StoSort(int? id)
         {
-            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            var data = 客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(P => P.職稱).ToList();
-            SelectList categoryList = new SelectList(
-                data,
-                "Id",
-                "職稱"
-                );
+            //var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
+            ViewBag.categoryList = getdropDownList();
+            ViewData.Model = dataStoSort(id);
 
-            ViewBag.categoryList = categoryList;
-
-            switch (id)
-            {
-                case 1:
-                    data = data.OrderBy(P => P.職稱).ToList();
-                    break;
-                case 2:
-                    data = data.OrderBy(P => P.姓名).ToList();
-                    break;
-                case 3:
-                    data = data.OrderBy(P => P.Email).ToList();
-                    break;
-                case 4:
-                    data = data.OrderBy(P => P.手機).ToList();
-                    break;
-                case 5:
-                    data = data.OrderBy(P => P.電話).ToList();
-                    break;
-                case 6:
-                    data = data.OrderBy(P => P.客戶資料.客戶名稱).ToList();
-                    break;
-            }
-
-            return View("Index", data);
-        }
-
-        public ActionResult StoSort_desc(int? id)
-        {
-            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            var data = 客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(P => P.職稱).ToList();
-            SelectList categoryList = new SelectList(
-                data,
-                "Id",
-                "職稱"
-                );
-
-            ViewBag.categoryList = categoryList;
-
-            switch (id)
-            {
-                case 1:
-                    data = data.OrderByDescending(P => P.職稱).ToList();
-                    break;
-                case 2:
-                    data = data.OrderByDescending(P => P.姓名).ToList();
-                    break;
-                case 3:
-                    data = data.OrderByDescending(P => P.Email).ToList();
-                    break;
-                case 4:
-                    data = data.OrderByDescending(P => P.手機).ToList();
-                    break;
-                case 5:
-                    data = data.OrderByDescending(P => P.電話).ToList();
-                    break;
-                case 6:
-                    data = data.OrderByDescending(P => P.客戶資料.客戶名稱).ToList();
-                    break;
-            }
-
-            return View("Index", data);
+            return View("Index");
         }
 
         public ActionResult Delete_View()
         {
             var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            var data = 客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(P => P.職稱).ToList();
-            SelectList categoryList = new SelectList(
-                data,
-                "Id",
-                "職稱"
-                );
+            ViewData.Model = 客戶聯絡人.Where(P => P.是否已刪除 == true);
 
-            ViewBag.categoryList = categoryList;
-            var data_delete = 客戶聯絡人.Where(P => P.是否已刪除 == true).ToList();
+            return View();
+        }
 
-            return View("Index", data_delete);
+        public ActionResult Export()
+        {
+            var exportSpource = GetExportDataWithAllColumns();
+            var dt = JsonConvert.DeserializeObject<DataTable>(exportSpource.ToString());
+
+            var exportFileName =
+                string.Concat("客戶聯絡人_", DateTime.Now.ToString("yyyyMMddHHmmss"), ".xlsx");
+
+            return new ExportExcelResult
+            {
+                SheetName = "客戶聯絡人",
+                FileName = exportFileName,
+                ExportData = dt
+            };
         }
     }
 }

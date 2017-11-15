@@ -10,7 +10,8 @@
 
 <p>
     @Html.ActionLink("創建新資料", "Create") |
-    @Html.ActionLink("顯示已刪除資料", "Delete_View")
+    @Html.ActionLink("顯示已刪除資料", "Delete_View")|
+    @Html.ActionLink("匯出Excel資料", "Export")
 </p>
 
 <p>
@@ -18,9 +19,9 @@
         @Html.DropDownList("dropDownList", (SelectList)ViewBag.categoryList)
         <input type="submit" value="篩選" />
     </form>
-    <form align="right" action="/客戶聯絡人/Index" method="get">
-        <input type="submit" value="顯示全部分類" name="dropDownList" />
-    </form>
+    @*<form align="right" action="/客戶聯絡人/Index" method="get">
+            <input type="submit" value="顯示全部分類" name="dropDownList" />
+        </form>*@
 </p>
 
 <p>
@@ -36,37 +37,37 @@
             @Html.DisplayNameFor(model => model.職稱)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 1 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 1 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 11 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.姓名)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 2 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 2 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 22 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 3 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 3 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 33 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.手機)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 4 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 4 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 44 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.電話)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 5 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 5 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 55 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.客戶資料.客戶名稱)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 6 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 6 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 66 })
         </th>
         <th></th>
     </tr>

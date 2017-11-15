@@ -8,18 +8,29 @@
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
-    客戶名稱、聯絡人數量、銀行帳戶數量
+    @*客戶名稱、聯絡人數量、銀行帳戶數量*@
+    @Html.ActionLink("匯出Excel資料", "Export_Statistics")
 </p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.客戶名稱)
+            <br />
+            @Html.ActionLink("升冪", "StoSort_Statistics", new { id = 1 })|
+            @Html.ActionLink("降冪", "StoSort_Statistics", new { id = 11 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.聯絡人數量)
+            <br />
+            @Html.ActionLink("升冪", "StoSort_Statistics", new { id = 2 })|
+            @Html.ActionLink("降冪", "StoSort_Statistics", new { id = 22 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.銀行帳戶數量)
+            <br />
+            @Html.ActionLink("升冪", "StoSort_Statistics", new { id = 3 })|
+            @Html.ActionLink("降冪", "StoSort_Statistics", new { id = 33 })
         </th>
         <th></th>
     </tr>

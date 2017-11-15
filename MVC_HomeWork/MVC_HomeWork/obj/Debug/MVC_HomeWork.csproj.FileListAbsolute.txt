@@ -66,6 +66,8 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_Hom
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.pdb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\DocumentFormat.OpenXml.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -79,6 +81,8 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_Hom
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Razor.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\WebGrease.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.xml
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.xml
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.xml
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -92,6 +96,7 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_Hom
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.pdb
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Newtonsoft.Json.xml
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Helpers.resources.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Mvc.resources.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Optimization.resources.dll
@@ -99,6 +104,121 @@ C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_Hom
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.dll
 C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.csprojResolveAssemblyReference.cache
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\csc.exe
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CSharp.Core.targets
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.VisualBasic.Core.targets
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\System.Collections.Immutable.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\System.Reflection.Metadata.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\vbc.exe
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\VBCSCompiler.exe
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\VBCSCompiler.exe.config
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.dll.config
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.pdb
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\DocumentFormat.OpenXml.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.Web.Infrastructure.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Newtonsoft.Json.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Helpers.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Mvc.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Optimization.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Razor.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Deployment.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Razor.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\WebGrease.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.pdb
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Helpers.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Mvc.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Optimization.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Razor.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Deployment.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Razor.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.pdb
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Newtonsoft.Json.xml
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Helpers.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Mvc.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Optimization.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Razor.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.csprojResolveAssemblyReference.cache
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.dll
+M:\@Git_WorkPlace@\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.pdb
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\csc.exe
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\vbc.exe
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\VBCSCompiler.exe
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.dll.config
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\MVC_HomeWork.pdb
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\DocumentFormat.OpenXml.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Helpers.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Mvc.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Optimization.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Razor.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Razor.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\WebGrease.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.pdb
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\ClosedXML.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Helpers.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Mvc.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Optimization.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.Razor.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\System.Web.WebPages.Razor.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Antlr3.Runtime.pdb
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Helpers.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Mvc.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Optimization.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.Razor.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.dll
+C:\Users\Administrator\Documents\Visual Studio 2017\Projects\MVC5_Course\MVC_HomeWork\MVC_HomeWork\obj\Debug\MVC_HomeWork.pdb

@@ -5,17 +5,24 @@
 }
 
 <h2>
-    @Html.ActionLink("表單首頁", "Index") 
+    @Html.ActionLink("表單首頁", "Index")
 </h2>
 
 <p>
     @Html.ActionLink("創建新資料", "Create") |
-    @Html.ActionLink("顯示已刪除資料", "Delete_View")
+    @Html.ActionLink("顯示已刪除資料", "Delete_View") |
+    @Html.ActionLink("匯出Excel資料", "Export")
+    @*<div class="well">
+            <button class="btn btn-primary" id="ButtonExport" name="ButtonExport">
+                匯出Excel資料
+            </button>
+        </div>*@
 </p>
 
 <p>
     <form align="right" action="/客戶資料/Index" method="get">
-        @Html.DropDownList("dropDownList", new SelectList(new string[] { "一般客戶", "付費客戶", "VIP客戶", "顯示全部分類" }))
+        @*  @Html.DropDownList("dropDownList", new SelectList(new string[] { "顯示全部分類","一般客戶", "付費客戶", "VIP客戶"  }))*@
+        @Html.DropDownList("dropDownList", (SelectList)ViewBag.categoryList)
         <input type="submit" value="篩選" />
     </form>
 </p>
@@ -33,43 +40,43 @@
             @Html.DisplayNameFor(model => model.客戶名稱)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 1 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 1 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 11 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.統一編號)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 2 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 2 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 22 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.電話)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 3 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 3 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 33 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.傳真)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 4 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 4 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 44 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.地址)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 5 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 5 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 55 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 6 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 6 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 66 })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.客戶分類)
             <br />
             @Html.ActionLink("升冪", "StoSort", new { id = 7 })|
-            @Html.ActionLink("降冪", "StoSort_desc", new { id = 7 })
+            @Html.ActionLink("降冪", "StoSort", new { id = 77 })
         </th>
         <th></th>
     </tr>
@@ -107,3 +114,8 @@
     }
 
 </table>
+
+@*@section scripts
+    {
+        <script src="~/Scripts/DataExport.js"></script>
+    }*@

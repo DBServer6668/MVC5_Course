@@ -7,13 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_HomeWork.Models;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using ClosedXML.Excel;
 
 namespace MVC_HomeWork.Controllers
 {
-    public class 客戶資料Controller : Controller
+    public class 客戶資料Controller : Base客戶資料Controller
     {
-        private 客戶資料Entities db = new 客戶資料Entities();
-
         // GET: 客戶資料
         //public ActionResult Index()
         //{
@@ -21,20 +22,30 @@ namespace MVC_HomeWork.Controllers
         //}
         public ActionResult Index(String keyword, String dropDownList)
         {
-            if (null != keyword)
+            if (null != dropDownList && !dropDownList.Equals("顯示全部分類"))
             {
-                var data = db.客戶資料.Where(P => P.客戶名稱.Contains(keyword) && P.是否已刪除 != true).ToList();
-                return View("Index", data);
-            }
-            else if (null != dropDownList && !dropDownList.Equals("顯示全部分類"))
-            {
-                var data = db.客戶資料.Where(P => P.客戶分類.Equals(dropDownList) && P.是否已刪除 != true).ToList();
-                return View("Index", data);
+                _dropDownList = dropDownList;
             }
             else
             {
-                return View(db.客戶資料.Where(P => P.是否已刪除 != true).ToList());
+                _dropDownList = null;
             }
+
+            if (null != keyword)
+            {
+                _keyword = keyword;
+
+            }
+            else
+            {
+                _keyword = null;
+            }
+
+            ViewBag.categoryList = getdropDownList();
+
+            ViewData.Model = getdata();
+
+            return View();
         }
 
         // GET: 客戶資料/Details/5
@@ -49,6 +60,7 @@ namespace MVC_HomeWork.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(客戶資料);
         }
 
@@ -88,6 +100,7 @@ namespace MVC_HomeWork.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(客戶資料);
         }
 
@@ -105,6 +118,7 @@ namespace MVC_HomeWork.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(客戶資料);
         }
 
@@ -120,6 +134,7 @@ namespace MVC_HomeWork.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(客戶資料);
         }
 
@@ -147,91 +162,75 @@ namespace MVC_HomeWork.Controllers
 
         public ActionResult StoSort(int? id)
         {
-            var data = db.客戶資料.Where(P => P.是否已刪除 != true).ToList();
+            ViewBag.categoryList = getdropDownList();
+            ViewData.Model = dataStoSort(id);
 
-            switch (id)
-            {
-                case 1:
-                    data = data.OrderBy(P => P.客戶名稱).ToList();
-                    break;
-                case 2:
-                    data = data.OrderBy(P => P.統一編號).ToList();
-                    break;
-                case 3:
-                    data = data.OrderBy(P => P.電話).ToList();
-                    break;
-                case 4:
-                    data = data.OrderBy(P => P.傳真).ToList();
-                    break;
-                case 5:
-                    data = data.OrderBy(P => P.地址).ToList();
-                    break;
-                case 6:
-                    data = data.OrderBy(P => P.Email).ToList();
-                    break;
-                case 7:
-                    data = data.OrderBy(P => P.客戶分類).ToList();
-                    break;
-            }
-
-            return View("Index", data);
+            return View("Index");
         }
-
-        public ActionResult StoSort_desc(int? id)
-        {
-            var data = db.客戶資料.Where(P => P.是否已刪除 != true).ToList();
-
-            switch (id)
-            {
-                case 1:
-                    data = data.OrderByDescending(P => P.客戶名稱).ToList();
-                    break;
-                case 2:
-                    data = data.OrderByDescending(P => P.統一編號).ToList();
-                    break;
-                case 3:
-                    data = data.OrderByDescending(P => P.電話).ToList();
-                    break;
-                case 4:
-                    data = data.OrderByDescending(P => P.傳真).ToList();
-                    break;
-                case 5:
-                    data = data.OrderByDescending(P => P.地址).ToList();
-                    break;
-                case 6:
-                    data = data.OrderByDescending(P => P.Email).ToList();
-                    break;
-                case 7:
-                    data = data.OrderByDescending(P => P.客戶分類).ToList();
-                    break;
-            }
-
-            return View("Index", data);
-        }
-
+        
         public ActionResult Delete_View()
         {
-            var data = db.客戶資料.Where(P => P.是否已刪除 == true).ToList();
-            return View("Index", data);
+            //ViewBag.categoryList = getdropDownList();
+            ViewData.Model = db.客戶資料.Where(P => P.是否已刪除 == true);
+
+            return View();
+        }
+        
+        //[HttpPost]
+        //public ActionResult HasData()
+        //{
+        //    JObject jo = new JObject();
+        //    bool result = !db.客戶資料.Count().Equals(0);
+        //    jo.Add("Msg", result.ToString());
+
+        //    return Content(JsonConvert.SerializeObject(jo), "application/json");
+        //}
+
+        public ActionResult Export()
+        {
+            var exportSpource = GetExportDataWithAllColumns();
+            var dt = JsonConvert.DeserializeObject<DataTable>(exportSpource.ToString());
+
+            var exportFileName =
+                string.Concat("客戶資料_", DateTime.Now.ToString("yyyyMMddHHmmss"), ".xlsx");
+
+            return new ExportExcelResult
+            {
+                SheetName = "客戶資料",
+                FileName = exportFileName,
+                ExportData = dt
+            };
         }
 
         public ActionResult Statistics()
         {
-            var db = new 客戶資料Entities();
+            ViewData.Model = getStatistics();
 
-            var result = db.客戶資料.Where(P => P.是否已刪除 != true);
-
-            // LINQ ( C# 3.0 )
-            //var data = "SELECT * FROM table WHERE ...";
-            var data = from p in result
-                       select new 客戶統計()
-                       {
-                           客戶名稱 = p.客戶名稱,
-                           銀行帳戶數量 = p.客戶銀行資訊.Count(),
-                           聯絡人數量 = p.客戶聯絡人.Count()
-                       };
-
-            return View(data);
+            return View();
         }
+
+        public ActionResult Export_Statistics()
+        {
+            var exportSpource = GetExportDataWithAllColumns_Statistics();
+            var dt = JsonConvert.DeserializeObject<DataTable>(exportSpource.ToString());
+
+            var exportFileName =
+                string.Concat("客戶統計_", DateTime.Now.ToString("yyyyMMddHHmmss"), ".xlsx");
+
+            return new ExportExcelResult
+            {
+                SheetName = "客戶統計",
+                FileName = exportFileName,
+                ExportData = dt
+            };
+        }
+
+        public ActionResult StoSort_Statistics(int? id)
+        {            
+            ViewData.Model = dataStoSort_Statistics(id);
+
+            return View("Statistics");
+        }
+
     }
 }

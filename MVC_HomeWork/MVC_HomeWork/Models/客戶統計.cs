@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_HomeWork.Models.DataTypeAttributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace MVC_HomeWork.Models
 
         public int Id { get; set; }
         [Required(ErrorMessage = "請填寫客戶名稱")]
-        [StringLength(10, ErrorMessage = "測試中，本系統名稱最長允許10個字元")]
+        //[StringLength(10, ErrorMessage = "測試中，本系統名稱最長允許10個字元")]
+        [CustomStringLengthValidation(10)]
         public string 客戶名稱 { get; set; }
 
         public int 聯絡人數量 { get; set; }
