@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,6 +17,7 @@ namespace Course_Example.Models
         //private FabricsEntities db = new FabricsEntities();
 
         // GET: Products
+        //[Authorize]
         public ActionResult Index()
         {
             //return View(db.Product.Take(10).ToList());
@@ -99,9 +101,16 @@ namespace Course_Example.Models
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        //public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        //public ActionResult Edit([Bind(Exclude = "")] Product product)
+        //延遲驗證
+        public ActionResult Edit(int id, FormCollection form)
         {
-            if (ModelState.IsValid)
+            //Product product = new Product();
+            Product product = db.Product.Find(id);
+            //TryUpdateModel(product, new string[] { "ProductId,ProductName,Price,Active,Stock" }); //在此進行ModelBind
+            //if (ModelState.IsValid)
+            if (TryUpdateModel(product, new string[] { "ProductId,ProductName,Price,Active,Stock" }))
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
@@ -151,9 +160,12 @@ namespace Course_Example.Models
         }
 
         [HttpPost]
+        [HandleError(ExceptionType = typeof(DbEntityValidationException),
+            View = "Error.DbEntityValidationException")]
         public ActionResult CreateNew(ProductCreationVM data)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            if (true || ModelState.IsValid)
             {
                 db.Product.Add(new Product()
                 {
@@ -161,7 +173,8 @@ namespace Course_Example.Models
                     ProductName = data.ProductName,
                     Price = data.Price,
                     Active = true,
-                    Stock = 1
+                    //Stock = 1
+                    Stock = 0
                 });
 
                 db.SaveChanges();

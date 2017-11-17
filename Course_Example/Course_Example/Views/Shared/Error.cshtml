@@ -8,7 +8,10 @@
 <body>
     <hgroup>
         <h1>錯誤。</h1>
+        @*<h1 class="text-danger">@Model.ControllerName / @Model.ActionName Error!</h1>*@
         <h2>處理您的要求時發生錯誤。</h2>
+
+        @*<pre>@Model.Exception.ToString()</pre>*@
     </hgroup>
 </body>
 </html>

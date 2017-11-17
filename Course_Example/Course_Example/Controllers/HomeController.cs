@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Course_Example.Models.ActionFilters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,12 @@ namespace Course_Example.Controllers
             return View();
         }
 
+        //[ShareDataAttribute]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            throw new ArgumentException("No Argument!");
 
+            //ViewBag.Message = "Your application description page.";
             return View();
         }
 
@@ -69,5 +72,16 @@ namespace Course_Example.Controllers
                 return File(Server.MapPath("~/Content/MMM.jpg"), "image/jpeg");
             }
         }
+
+        public ActionResult ViewTest()
+        {
+            return PartialView();
+        }
+
+        public ActionResult MetroIndex()
+        {
+            return View();
+        }
+
     }
 }
