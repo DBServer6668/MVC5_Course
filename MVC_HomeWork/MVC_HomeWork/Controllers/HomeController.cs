@@ -68,5 +68,10 @@ namespace MVC_HomeWork.Controllers
 
             //return View();
         }
+
+        public ActionResult MetroView()
+        {
+            return PartialView();
+        }
     }
 }
