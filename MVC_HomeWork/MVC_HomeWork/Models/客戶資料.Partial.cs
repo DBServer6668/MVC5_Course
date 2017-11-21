@@ -17,7 +17,7 @@ namespace MVC_HomeWork.Models
 
         [Required(ErrorMessage = "請填寫客戶名稱")]
         //[StringLength(10, ErrorMessage = "測試中，本系統名稱最長允許10個字元")]
-        [CustomStringLengthValidation(5)]
+        [CustomStringLengthValidation(10)]
         public string 客戶名稱 { get; set; }
 
         [Required(ErrorMessage = "請填寫統一編號")]

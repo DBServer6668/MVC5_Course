@@ -28,7 +28,7 @@ namespace MVC_HomeWork.Controllers
             {
                 _dropDownList = dropDownList;
             }
-            else
+            else if (null != dropDownList && dropDownList.Equals("顯示全部分類"))
             {
                 _dropDownList = null;
             }

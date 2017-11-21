@@ -10,6 +10,7 @@ using MVC_HomeWork.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
+using System.Data.Entity.Validation;
 
 namespace MVC_HomeWork.Controllers
 {
@@ -26,7 +27,7 @@ namespace MVC_HomeWork.Controllers
             {
                 _dropDownList = dropDownList;
             }
-            else
+            else if (null != dropDownList && dropDownList.Equals("顯示全部分類"))
             {
                 _dropDownList = null;
             }
@@ -167,7 +168,7 @@ namespace MVC_HomeWork.Controllers
 
             return View("Index");
         }
-        
+
         public ActionResult Delete_View()
         {
             //ViewBag.categoryList = getdropDownList();
@@ -175,7 +176,7 @@ namespace MVC_HomeWork.Controllers
 
             return View();
         }
-        
+
         //[HttpPost]
         //public ActionResult HasData()
         //{
@@ -226,11 +227,23 @@ namespace MVC_HomeWork.Controllers
         }
 
         public ActionResult StoSort_Statistics(int? id)
-        {            
+        {
             ViewData.Model = dataStoSort_Statistics(id);
 
             return View("Statistics");
         }
 
+        [HandleError(ExceptionType = typeof(DbEntityValidationException),
+            View = "DbEntityValidationException")]
+        public ActionResult HandleError()
+        {
+            db.客戶資料.Add(new 客戶資料()
+            {
+                客戶名稱 = "12345",
+                地址 = "123456789"
+            });
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -127,7 +127,11 @@ namespace MVC_HomeWork.Controllers
 
         protected JArray GetExportDataWithAllColumns()
         {
-            var query = db.客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(x => x.Id);
+            var query = db.客戶聯絡人.Where(P => P.是否已刪除 != true).OrderBy(x => x.客戶Id);
+            if (null != _dropDownList)
+            {
+                query = query.Where(P => P.職稱.Equals(_dropDownList)).OrderBy(P => P.客戶Id);
+            }
 
             JArray jObjects = new JArray();
 

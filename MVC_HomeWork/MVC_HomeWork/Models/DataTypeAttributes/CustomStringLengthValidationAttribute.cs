@@ -19,7 +19,7 @@ namespace MVC_HomeWork.Models.DataTypeAttributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (value.ToString().Length < num)
+            if (value.ToString().Length <= num)
             {
                 return ValidationResult.Success;
             }

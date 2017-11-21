@@ -134,13 +134,16 @@ namespace MVC_HomeWork.Controllers
 
             return data;
         }
-        
+
         protected JArray GetExportDataWithAllColumns()
         {
-            var query = db.客戶資料.Where(P => P.是否已刪除 != true).OrderBy(x => x.Id);
+            var query = db.客戶資料.Where(P => P.是否已刪除 != true).OrderBy(P => P.Id);
+            if (null != _dropDownList)
+            {
+                query = query.Where(P => P.客戶分類.Equals(_dropDownList)).OrderBy(P => P.Id);
+            }
 
             JArray jObjects = new JArray();
-
             foreach (var item in query)
             {
                 var jo = new JObject
@@ -216,7 +219,7 @@ namespace MVC_HomeWork.Controllers
 
             return data;
         }
-        
+
         protected JArray GetExportDataWithAllColumns_Statistics()
         {
             var db = new 客戶資料Entities();

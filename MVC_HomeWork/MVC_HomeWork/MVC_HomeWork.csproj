@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -138,6 +139,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActionFilters\ActionMessageAttribute.cs" />
     <Compile Include="Controllers\Base客戶聯絡人Controller.cs" />
     <Compile Include="Controllers\Base客戶資料Controller.cs" />
     <Compile Include="Controllers\ExportExcelResult.cs" />
@@ -237,7 +239,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -271,6 +275,7 @@
     <Content Include="Views\客戶銀行資訊\Delete_View.cshtml" />
     <Content Include="Views\客戶聯絡人\Delete_View.cshtml" />
     <Content Include="Views\Home\AlertPost.cshtml" />
+    <Content Include="Views\Shared\DbEntityValidationException.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

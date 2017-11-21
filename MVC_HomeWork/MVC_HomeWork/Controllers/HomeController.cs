@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MVC_HomeWork.Controllers.ActionFilters;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MVC_HomeWork.Controllers
 {
+    [ActionMessageAttribute]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -17,7 +19,7 @@ namespace MVC_HomeWork.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "This is APP Team number in ASP.NET MVC 5";
+            //ViewBag.Message = "This is APP Team number in ASP.NET MVC 5";
 
             return View();
         }
@@ -50,13 +52,21 @@ namespace MVC_HomeWork.Controllers
                     jo.Add("result", true);
                     jo.Add("msg", Account);
                 }
-                else {
+                else
+                {
                     jo.Add("result", false);
                     jo.Add("msg", "登入錯誤，請輸入正確的帳號密碼");
                 }
             }
 
-            return Content(JsonConvert.SerializeObject(jo),"application/json");
+            return Content(JsonConvert.SerializeObject(jo), "application/json");
+        }
+
+        public ActionResult DefaultError()
+        {
+            throw new ArgumentException("No Argument!");
+
+            //return View();
         }
     }
 }
