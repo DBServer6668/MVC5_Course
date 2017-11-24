@@ -132,6 +132,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,9 +140,6 @@
     <Compile Include="Models\ActionFilters\ShareDataAttribute.cs" />
     <Compile Include="Models\Client.cs">
       <DependentUpon>Fabrics.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Client.Partial.cs">
-      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataTypeAttributes\ValidateTaiwanAddressAttribute.cs" />
     <Compile Include="Models\EFGeneratePartialClass.cs">
@@ -438,10 +436,19 @@
     <Content Include="Views\Home\ViewTest.cshtml" />
     <Content Include="Views\Home\MetroIndex.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Products\ShowOrderLines.cshtml" />
+    <Content Include="Views\Products\OrderLines.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Gender.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Stars.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateOfBirth.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateOfBirth.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Base\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

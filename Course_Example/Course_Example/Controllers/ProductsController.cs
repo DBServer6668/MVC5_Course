@@ -52,12 +52,19 @@ namespace Course_Example.Models
             {
                 return HttpNotFound();
             }
+            //ViewBag.OrderLines = product.OrderLine.ToList();
             return View(product);
         }
 
         // GET: Products/Create
         public ActionResult Create()
         {
+            var items = new List<SelectListItem>();
+            items.Add(new SelectListItem() { Text = "100", Value = "100" });
+            items.Add(new SelectListItem() { Text = "150", Value = "150" });
+            //ViewData["Price"] = items;
+            ViewData["Price"] = new SelectList(items, "Value", "Text");
+
             return View();
         }
 
@@ -68,6 +75,12 @@ namespace Course_Example.Models
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
         {
+            var items = new List<SelectListItem>();
+            items.Add(new SelectListItem() { Text = "100", Value = "100" });
+            items.Add(new SelectListItem() { Text = "150", Value = "150" });
+            //ViewData["Price"] = items;
+            ViewData["Price"] = new SelectList(items, "Value", "Text");
+
             if (ModelState.IsValid)
             {
                 db.Product.Add(product);
@@ -93,6 +106,10 @@ namespace Course_Example.Models
             {
                 return HttpNotFound();
             }
+
+            var items = (from p in db.Product select p.Price).Distinct().OrderBy(p => p.Value);
+            ViewData["Price"] = new SelectList(items, Convert.ToInt32(product.Price));
+
             return View(product);
         }
 
@@ -248,6 +265,12 @@ namespace Course_Example.Models
             db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price-1 WHERE ProductId=" + id);
 
             return RedirectToAction("Top10");
+        }
+
+        public ActionResult OrderLines(int id)
+        {
+            ViewData.Model = db.OrderLine.Where(P => P.ProductId == id);
+            return PartialView();
         }
     }
 }

@@ -11,7 +11,8 @@ namespace Course_Example.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,16 @@ namespace Course_Example.Models
         {
             this.Order = new HashSet<Order>();
         }
-    
+
         public int ClientId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        [UIHint("Gender")]
         public string Gender { get; set; }
+        [UIHint("DateOfBirth")]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
+        [UIHint("Stars")]
         public Nullable<double> CreditRating { get; set; }
         public string XCode { get; set; }
         public Nullable<int> OccupationId { get; set; }
@@ -37,7 +41,7 @@ namespace Course_Example.Models
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
         public string Notes { get; set; }
-    
+
         public virtual Occupation Occupation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

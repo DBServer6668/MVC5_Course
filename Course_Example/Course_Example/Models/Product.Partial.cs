@@ -25,7 +25,8 @@ namespace Course_Example.Models
         public int ProductId { get; set; }
         [Required]
         [StringLength(80, ErrorMessage = "欄位長度不得大於 80 個字元")]
-        [ValidateTaiwanAddress]
+        //[ValidateTaiwanAddress]
+        //[DataType(DataType.EmailAddress)]
         public string ProductName { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }

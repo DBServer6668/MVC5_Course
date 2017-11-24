@@ -44,6 +44,13 @@
 
     </dl>
 </div>
+
+@*已有Model 可直接Partial生成所需View - 如表單靜態資料 省去Action流程*@
+@Html.Partial("ShowOrderLines", Model.OrderLine)
+
+@*有ID 建立Action撈取資料處理 - 可獨立 彈性較高*@
+@Html.Action("OrderLines" , new { id = Model.ProductId})
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
     @Html.ActionLink("Back to List", "Index")
